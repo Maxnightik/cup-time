@@ -304,6 +304,25 @@ p {
   gap: 12px;
 }
 
+.footer__social-link {
+  display: block;
+  line-height: 0;
+  color: #fff;
+  transition: color 0.3s ease-in-out;
+  outline: none;
+  border-radius: 6px;
+}
+
+.footer__social-link:hover {
+  color: #64099b;
+}
+
+.footer__social-link:focus-visible {
+  color: #64099b;
+  outline: 2px solid #64099b;
+  outline-offset: 3px;
+}
+
 .cart {
   padding: 215px 0 50px;
 }

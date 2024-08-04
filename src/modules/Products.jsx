@@ -6,7 +6,7 @@ import { SkeletonLoaderr } from "./SkeletonLoaderr";
 
 export const Products = () => {
   const [searchParams] = useSearchParams();
-  const { products, setCategory, categories } = useProducts();
+  const { products, setCategory, categories, productsRef } = useProducts();
   const category = searchParams.get("category");
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const Products = () => {
   const categoryTitle = categories[category] || "Товары";
 
   return (
-    <section className="products">
+    <section className="products" ref={productsRef}>
       <div className="container">
         <h2 className="products__title">{categoryTitle}</h2>
 

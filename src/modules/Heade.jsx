@@ -1,10 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContex";
 import { useProducts } from "../context/ProductContext";
 import { useState, useEffect } from "react";
+import { getActiveClass } from "../helpers";
 
 export const Heade = () => {
-  const location = useLocation();
   const { cart } = useCart();
   const { categories } = useProducts();
 
@@ -21,14 +21,6 @@ export const Heade = () => {
     setIsOpenMenu(true);
   };
 
-  const getActiveClass = (category) => {
-    const currentCategory = new URLSearchParams(location.search).get(
-      "category"
-    );
-
-    return currentCategory === category ? "active" : "";
-  };
-
   return (
     <header className="header">
       <div className="container header__container">
@@ -39,7 +31,7 @@ export const Heade = () => {
         <nav className={`header__nav ${isMenuOpen ? "active" : ""}`}>
           <ul className="header__menu">
             {Object.entries(categories).map(([key, value]) => (
-              <li key={key} className="header__manu-item">
+              <li key={key} className="header__menu-item">
                 <Link
                   className={`header__menu-link ${getActiveClass(key)} `}
                   to={`/products?category=${key}`}
