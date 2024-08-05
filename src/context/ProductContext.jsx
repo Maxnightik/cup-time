@@ -1,8 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useState } from "react";
-import { createContext } from "react";
+import { createContext, useContext, useEffect, useState, useRef } from "react";
 import { API_URL } from "../const";
-import { useContext } from "react";
 
 const ProductContext = createContext();
 
@@ -29,7 +26,7 @@ export const ProductProvider = ({ children }) => {
           return response.json();
         })
         .then((data) => setProducts(data))
-        .catch((error) => console.error(`Error fetch products: ${error}!`));
+        .catch((error) => console.error(`Error fetching products: ${error}!`));
     }
   }, [category]);
 

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContex";
-import { Cartitem } from "./Cartitem";
-import { SkeletonLoaderr } from "./SkeletonLoaderr";
-import { useOrder } from "../context/OrderContext";
+import { SkeletonLoader } from "./SkeletonLoader";
 import { API_URL } from "../const";
 import Modal from "react-modal";
+import { Cartitem } from "./Cartitem";
+import { useOrder } from "../context/OrderContext";
 
 Modal.setAppElement("#root");
 
@@ -19,11 +19,11 @@ export const Cart = () => {
   const handleSubmit = async () => {
     const orderData = {
       ...orderDetails,
-      items: cart.map((item) => ({ id: item.id, quantity: item.quantity })),
+      items: cart.map(({ id, quantity }) => ({ id, quantity })),
     };
 
     try {
-      const response = await fetch(`${API_URL}/api/orders`, {
+      const response = await fetch(`${API_URL}/api/orders/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,6 +34,7 @@ export const Cart = () => {
       if (!response.ok) {
         throw new Error("Ошибка при отправке заказа");
       }
+
       const result = await response.json();
       setOrderStatus("success");
       setOrderId(result.order.id);
@@ -41,7 +42,7 @@ export const Cart = () => {
       clearOrderDetails();
     } catch (error) {
       setOrderStatus("error");
-      console.error(`Ошибка : ${error}`);
+      console.error(`Ошибка: ${error}`);
     } finally {
       setModalIsOpen(true);
     }
@@ -67,13 +68,13 @@ export const Cart = () => {
           {cart ? (
             cart.map((item) => <Cartitem key={item.id} data={item} />)
           ) : (
-            <SkeletonLoaderr />
+            <SkeletonLoader />
           )}
         </ul>
 
         <div className="cart__summary">
           <h3 className="cart__summary-title">Итого:</h3>
-          <p className="cart__total">{totalPrice}&nbsp;₴</p>
+          <p className="cart__total">{totalPrice}&nbsp;₽</p>
           <button className="cart__order-button" onClick={handleSubmit}>
             Заказать
           </button>

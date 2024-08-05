@@ -1,12 +1,12 @@
 import { Main } from "./modules/Main";
 import { Footer } from "./modules/Footer";
-import { Heade } from "./modules/Heade";
 import { BrowserRouter } from "react-router-dom";
+import { Header } from "./modules/Header";
 
 function App() {
   return (
     <BrowserRouter>
-      <Heade />
+      <Header />
 
       <Main />
 

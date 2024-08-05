@@ -9,7 +9,7 @@ export const OrderProvider = ({ children }) => {
     address: "",
     payment: "cash",
   });
-    
+
   const updateOrderDetails = (field, value) => {
     setOrderDetails((prevDetails) => ({
       ...prevDetails,

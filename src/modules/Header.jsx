@@ -4,7 +4,7 @@ import { useProducts } from "../context/ProductContext";
 import { useState, useEffect } from "react";
 import { getActiveClass } from "../helpers";
 
-export const Heade = () => {
+export const Header = () => {
   const { cart } = useCart();
   const { categories } = useProducts();
 
