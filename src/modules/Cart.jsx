@@ -74,7 +74,7 @@ export const Cart = () => {
 
         <div className="cart__summary">
           <h3 className="cart__summary-title">Итого:</h3>
-          <p className="cart__total">{totalPrice}&nbsp;₽</p>
+          <p className="cart__total">{totalPrice}&nbsp;₴</p>
           <button className="cart__order-button" onClick={handleSubmit}>
             Заказать
           </button>
